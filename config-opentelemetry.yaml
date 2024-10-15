@@ -1,0 +1,34 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+processors:
+  batch:
+    send_batch_max_size: 1000
+    send_batch_size: 100
+    timeout: 10s
+
+
+connectors:
+  datadog/connector: {}
+
+exporters:
+  datadog/exporter:
+    api:
+      site: datadoghq.com
+      key: ${DD_API_KEY}
+    metrics:
+      histograms:
+        mode: counters
+        send_aggregation_metrics: true
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]  # Use otlp as receiver
+      processors: [batch]
+      exporters: [datadog/exporter]  # Datadog exporter handles sending to Datadog
