@@ -7,6 +7,18 @@
 - Easily attach tags (attributes) to the metrics for enriched observability.
 - Supports OpenTelemetry OTLP protocol for exporting metrics.
 
+## Installation
+
+**Install with PyPi**
+```python
+pip install otel-metric-base
+```
+Or build from source (from repo root directory)
+```python
+python -m build
+```
+
+
 ## Usage
 
 ```python
