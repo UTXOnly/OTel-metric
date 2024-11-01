@@ -117,4 +117,6 @@ class OtelMetricBase:
         otlp_exporter = OTLPMetricExporter(endpoint=otlp_endpoint, insecure=True)
 ```
 
+(Test commit)
+
 
